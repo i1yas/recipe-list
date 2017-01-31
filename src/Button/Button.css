@@ -9,7 +9,7 @@
 }
 
 .Button:hover {
-	background-color: #fffff2;
+	background-color: #fffefa;
 	box-shadow: 0 1px 5px rgba(0, 0, 0, .07);
 }
 
@@ -21,7 +21,6 @@
 
 .Button:focus {
 	outline: 0;
-	background-color: #ffedd5;
 	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2),
-	inset 0 0 3px white;
+				inset 0 0 1px 2px rgba(255, 195, 0, 0.15);
 }
