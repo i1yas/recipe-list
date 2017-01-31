@@ -1,0 +1,6 @@
+@font-face {
+	font-family:Gabriela;
+	src:local('Gabriela'),
+		local('Gabriela-Regular'),
+		url('./shared-resources/fonts/Gabriela-Regular.ttf');
+}

@@ -1,0 +1,27 @@
+.Button {
+	border: none;
+	padding: .5rem;
+	font-size: 1.2rem;
+	color: #716f6d;
+	background-color: #fffdf4;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+	transition: box-shadow .05s;
+}
+
+.Button:hover {
+	background-color: #fffff2;
+	box-shadow: 0 1px 5px rgba(0, 0, 0, .07);
+}
+
+.Button:active {
+	color: #9a9a9a;
+	background-color: #fff;
+	box-shadow: 0 0 2px rgba(0, 0, 0, .2);
+}
+
+.Button:focus {
+	outline: 0;
+	background-color: #ffedd5;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2),
+	inset 0 0 3px white;
+}
