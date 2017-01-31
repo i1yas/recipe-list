@@ -1,0 +1,6 @@
+.Ingr {
+	padding: 1rem 1.5rem;
+	display: block;
+	list-style-type: none;
+	border-bottom: 1px dashed rgba(0, 0, 0, .1);
+}

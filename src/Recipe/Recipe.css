@@ -1,0 +1,21 @@
+.Recipe {
+	margin-bottom: 2px;
+}
+
+.Recipe__name {
+	padding: .5rem 1rem;
+	width: 100%;
+	text-align: left;
+	cursor: pointer;
+	display: block;
+	font-family: Gabriela, serif;
+	font-size: 1.5rem;
+	background: #fff;
+	border: none;
+	outline: none;
+}
+
+.Recipe__name:hover {
+	color: #2f2d23;
+	background: #fffff4;
+}

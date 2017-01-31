@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Recipe from '../Recipe/Recipe.js';
+import './Recipe-Items.css'
 
 class RecipeItems extends Component {
 	constructor(props) {

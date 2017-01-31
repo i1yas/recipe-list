@@ -1,5 +1,14 @@
 .App {
 	margin-left: auto;
 	margin-right: auto;
+	padding-top: 1rem;
+	padding-bottom: 1rem;
 	max-width: 960px;
+}
+
+@media(max-width: 1000px) {
+	.App {
+		padding-left: 1rem;
+		padding-right: 1rem;
+	}
 }

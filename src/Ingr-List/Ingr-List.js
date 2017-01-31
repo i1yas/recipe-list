@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Ingr from '../Ingr/Ingr.js';
+import './Ingr-List.css';
 
 class IngrList extends Component {
 	render() {
