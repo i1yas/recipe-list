@@ -7,11 +7,16 @@ class IngrList extends Component {
 		super(props);
 		this.state = {list: props.data}
 	}
+
 	render() {
 		return (
 			<ul className="Ingr-List">
-				{this.state.list.map((ingr, id) => {
-					return <Ingr key={id}>{ingr}</Ingr>
+				{this.state.list.map(ingr => {
+					return <Ingr key={ingr.id}
+					updateList={this.props.updateList}
+					value={ingr.value}
+					id={ingr.id}
+					/>
 				})}
 			</ul>
 		);

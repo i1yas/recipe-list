@@ -5,15 +5,9 @@ class Ingr extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			value: props.children,
-			isEditable: false
+			id: props.id,
+			value: props.value
 		}
-	}
-	toggleEditMode() {
-		this.setState({
-			...this.state,
-			isEditable: !this.state.isEditable
-		});
 	}
 	componentDidMount() {
 		window.document.addEventListener('click', this.handleDocumentClick.bind(this), false);
@@ -34,7 +28,8 @@ class Ingr extends Component {
 		this.setState({
 			...this.state,
 			value: event.target.value
-		})
+		});
+		this.props.updateList(this.state)
 	}
 	render() {
 		return (
@@ -44,9 +39,8 @@ class Ingr extends Component {
 					value={this.state.value}
 					className='Ingr__input'
 					ref='area'
-					contentEditable={this.state.isEditable}
-					onClick={this.toggleEditMode.bind(this)}
 					onChange={this.updateValue.bind(this)}
+					onBlur={this.updateValue.bind(this)}
 					/>
 				</div>
 				<button className='Ingr__delete'>
