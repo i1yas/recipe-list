@@ -24,12 +24,15 @@ class Ingr extends Component {
 			});
 		}
 	}
-	updateValue(event) {
+	updateItem(event) {
 		this.setState({
 			...this.state,
 			value: event.target.value
 		});
 		this.props.updateList(this.state)
+	}
+	deleteItem() {
+		this.props.deleteItem(this.state);
 	}
 	render() {
 		return (
@@ -39,11 +42,13 @@ class Ingr extends Component {
 					value={this.state.value}
 					className='Ingr__input'
 					ref='area'
-					onChange={this.updateValue.bind(this)}
-					onBlur={this.updateValue.bind(this)}
+					onChange={this.updateItem.bind(this)}
+					onBlur={this.updateItem.bind(this)}
 					/>
 				</div>
-				<button className='Ingr__delete'>
+				<button className='Ingr__delete'
+					onClick={this.deleteItem.bind(this)}
+					>
 					x
 				</button>
 			</li>

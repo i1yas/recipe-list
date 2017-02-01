@@ -28,12 +28,25 @@ class Recipe extends Component {
 			ingrList: newList
 		});
 	}
+	deleteItem(deleteItem) {
+		const filteredList = this.state.ingrList.filter(item => {
+			return item.id !== deleteItem.id;
+		});
+		this.setState({
+			...this.state,
+			ingrList: filteredList
+		});
+	}
 	render() {
+		debugger;
 		return (
 			<div className="Recipe">
 				<button className="Recipe__name" onClick={this.toggleList.bind(this)}>{this.state.name}</button>
 				{this.state.isOpen &&
-					<IngrList data={this.state.ingrList} updateList={this.updateList.bind(this)}/>
+					<IngrList data={this.state.ingrList}
+					updateList={this.updateList.bind(this)}
+					deleteItem={this.deleteItem.bind(this)}
+					/>
 				}
 			</div>
 		);

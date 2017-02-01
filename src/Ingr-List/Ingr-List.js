@@ -3,17 +3,14 @@ import Ingr from '../Ingr/Ingr.js';
 import './Ingr-List.css';
 
 class IngrList extends Component {
-	constructor(props) {
-		super(props);
-		this.state = {list: props.data}
-	}
-
 	render() {
+		debugger;
 		return (
 			<ul className="Ingr-List">
-				{this.state.list.map(ingr => {
+				{this.props.data.map(ingr => {
 					return <Ingr key={ingr.id}
 					updateList={this.props.updateList}
+					deleteItem={this.props.deleteItem}
 					value={ingr.value}
 					id={ingr.id}
 					/>
