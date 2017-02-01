@@ -2,10 +2,56 @@ import React, { Component } from 'react';
 import './Ingr.css';
 
 class Ingr extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			value: props.children,
+			isEditable: false
+		}
+	}
+	toggleEditMode() {
+		this.setState({
+			...this.state,
+			isEditable: !this.state.isEditable
+		});
+	}
+	componentDidMount() {
+		window.document.addEventListener('click', this.handleDocumentClick.bind(this), false);
+	}
+	componentWillUnmount() {
+		window.document.removeEventListener('click', this.handleDocumentClick.bind(this), false);
+	}
+	handleDocumentClick(event) {
+		const area = this.refs.area
+		if(area && !area.contains(event.target)) {
+			this.setState({
+				...this.state,
+				isEditable: false
+			});
+		}
+	}
+	updateValue(event) {
+		this.setState({
+			...this.state,
+			value: event.target.value
+		})
+	}
 	render() {
 		return (
-			<li className="Ingr">
-				{this.props.children}
+			<li className='Ingr'>
+				<div className='Ingr__input-container'>
+					<input type='text'
+					value={this.state.value}
+					className='Ingr__input'
+					ref='area'
+					contentEditable={this.state.isEditable}
+					onClick={this.toggleEditMode.bind(this)}
+					onChange={this.updateValue.bind(this)}
+					/>
+				</div>
+				<button className='Ingr__delete'>
+					X
+				</button>
 			</li>
 		);
 	}
