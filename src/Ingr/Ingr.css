@@ -37,4 +37,17 @@
 	display: table-cell;
 	width: 3.5rem;
 	height: 100%;
+	background: none;
+	border: none;
+	color: #afa799;
+}
+
+.Ingr__delete:hover {
+	color: #3C372E;
+}
+
+.Ingr__delete:focus {
+	outline: none;
+	background-color: rgba(255, 229, 0, .1);
+	outline: 5px solid rgba(255, 255, 0, .1);
 }

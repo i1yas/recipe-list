@@ -44,7 +44,7 @@ class Ingr extends Component {
 					/>
 				</div>
 				<button className='Ingr__delete'>
-					X
+					x
 				</button>
 			</li>
 		);
