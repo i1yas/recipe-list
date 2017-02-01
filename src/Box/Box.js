@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import RecipeItems from '../Recipe-Items/Recipe-Items.js';
 import Button from '../Button/Button.js';
+import './Box.css'
 
 import initialState from '../initialState.json';
 
@@ -9,7 +10,9 @@ class Box extends Component {
 		return (
 			<div className="Box">
 				<RecipeItems initialState={initialState}/>
-				<Button> Добавить </Button>
+				<Button>
+					Добавить рецепт
+				</Button>
 			</div>
 		);
 	}

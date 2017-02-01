@@ -4,7 +4,6 @@ import './Ingr-List.css';
 
 class IngrList extends Component {
 	render() {
-		debugger;
 		return (
 			<ul className="Ingr-List">
 				{this.props.data.map(ingr => {

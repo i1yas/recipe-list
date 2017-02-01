@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import IngrList from '../Ingr-List/Ingr-List.js';
+import Button from '../Button/Button';
 import './Recipe.css';
+
 
 class Recipe extends Component {
 	constructor(props){
@@ -38,15 +40,19 @@ class Recipe extends Component {
 		});
 	}
 	render() {
-		debugger;
 		return (
 			<div className="Recipe">
 				<button className="Recipe__name" onClick={this.toggleList.bind(this)}>{this.state.name}</button>
 				{this.state.isOpen &&
-					<IngrList data={this.state.ingrList}
-					updateList={this.updateList.bind(this)}
-					deleteItem={this.deleteItem.bind(this)}
-					/>
+					<div className="Recipe__toggle-box">
+						<IngrList data={this.state.ingrList}
+						updateList={this.updateList.bind(this)}
+						deleteItem={this.deleteItem.bind(this)}
+						/>
+						<Button className="Recipe__add-ingr">
+							Добавить ингредиент
+						</Button>
+					</div>
 				}
 			</div>
 		);
