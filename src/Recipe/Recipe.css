@@ -36,7 +36,7 @@
 }
 
 .Recipe__input-rename {
-	padding: .5rem;
+	padding: .5rem 1rem;
 	font-size: 2rem;
 	width: 100%;
 	position: relative;
