@@ -67,7 +67,15 @@ class Recipe extends Component {
 		});
 	}
 	blurHandler() {
-		this.finishRename();
+		debugger;
+		if(this.state.name === '') {
+			this.setState({
+				...this.state,
+				name: "Название рецепта"
+			}, this.finishRename);
+		} else {
+			this.finishRename();
+		}
 	}
 	enterHandler(event) {
 		if(event.key === 'Enter') {
