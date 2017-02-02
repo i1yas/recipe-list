@@ -34,6 +34,11 @@ class Ingr extends Component {
 	deleteItem() {
 		this.props.deleteItem(this.state);
 	}
+	offEditMode(event) {
+		if(event.key === 'Enter') {
+			this.refs.area.blur();
+		}
+	}
 	render() {
 		return (
 			<li className='Ingr'>
@@ -44,6 +49,7 @@ class Ingr extends Component {
 					ref='area'
 					onChange={this.updateItem.bind(this)}
 					onBlur={this.updateItem.bind(this)}
+					onKeyPress={this.offEditMode.bind(this)}
 					/>
 				</div>
 				<button className='Ingr__delete'
