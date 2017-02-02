@@ -39,6 +39,17 @@ class Recipe extends Component {
 			ingrList: filteredList
 		});
 	}
+	addIngr() {
+		const newIngr = {
+			id: this.state.ingrList.length,
+			value: 'новый ингредиент'
+		}
+		const newList = [...this.state.ingrList, newIngr];
+		this.setState({
+			...this.state,
+			ingrList: newList
+		});
+	}
 	render() {
 		return (
 			<div className="Recipe">
@@ -49,7 +60,9 @@ class Recipe extends Component {
 						updateList={this.updateList.bind(this)}
 						deleteItem={this.deleteItem.bind(this)}
 						/>
-						<Button className="Recipe__add-ingr">
+						<Button
+						clickEvent={this.addIngr.bind(this)}
+						>
 							Добавить ингредиент
 						</Button>
 					</div>
