@@ -5,4 +5,5 @@ body {
 	font-size: 16px;
 	background-color: #f7f0e4;
 	color: #42413e;
+	overflow-y: scroll;
 }
