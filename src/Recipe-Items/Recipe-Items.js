@@ -4,7 +4,11 @@ import './Recipe-Items.css'
 
 class RecipeItems extends Component {
 	render() {
-		const data = this.props.initialState;
+		const data = this.props.recipeList;
+		if(!data.map) {
+			console.log(data)
+			debugger;
+		}
 		return (
 			<div className="Recipe-Items">
 				{data.map(recipe => {
