@@ -37,6 +37,10 @@ class Recipe extends Component {
 		this.setState({
 			...this.state,
 			ingrList: filteredList
+		}, () => {
+			if(filteredList.length === 0) {
+				this.addIngr()
+			}
 		});
 	}
 	addIngr() {
