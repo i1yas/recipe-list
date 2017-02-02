@@ -11,16 +11,21 @@ class Recipe extends Component {
 			...props.data
 		};
 	}
+	componentDidUpdate() {
+		if(this.state.isRenamed) {
+			this.refs.area.focus();
+		}
+	}
 	toggleList() {
 		this.setState({
 			...this.state,
 			isOpen: !this.state.isOpen
 		});
 	}
-	rename() {
+	updateName(event) {
 		this.setState({
 			...this.state,
-			name: "Рецепт"
+			name: event.target.value
 		})
 	}
 	delete() {
@@ -52,6 +57,26 @@ class Recipe extends Component {
 			}
 		});
 	}
+	finishRename() {
+		this.setState({
+			...this.state,
+			isRenamed: false
+		})
+	};
+	renameHandler() {
+		this.setState({
+			...this.state,
+			isRenamed: true
+		});
+	}
+	blurHandler() {
+		this.finishRename();
+	}
+	enterHandler(event) {
+		if(event.key === 'Enter') {
+			this.finishRename();
+		}
+	}
 	addIngr() {
 		const newIngr = {
 			id: this.state.ingrList.length,
@@ -73,6 +98,16 @@ class Recipe extends Component {
 						updateList={this.updateList.bind(this)}
 						deleteItem={this.deleteItem.bind(this)}
 						/>
+						{this.state.isRenamed &&
+							<input type="text"
+							className="Recipe__input-rename"
+							ref="area"
+							value={this.state.name}
+							onChange={this.updateName.bind(this)}
+							onKeyPress={this.enterHandler.bind(this)}
+							onBlur={this.blurHandler.bind(this)}
+							/>
+						}
 						<div className="Recipe__buttons">
 							<div className="Recipe__add">
 								<Button
@@ -83,7 +118,7 @@ class Recipe extends Component {
 							</div>
 							<div className="Recipe__rename">
 								<Button
-								clickEvent={this.rename.bind(this)}
+								clickEvent={this.renameHandler.bind(this)}
 								>
 									Переименовать
 								</Button>
