@@ -9,6 +9,14 @@ class Box extends Component {
 		super(props);
 		this.state = {recipeList: props.data};
 	}
+	deleteRecipe(inputRecipe) {
+		const filteredList = this.state.recipeList.filter(recipe => {
+			return recipe.id !== inputRecipe.id;
+		});
+		this.setState({
+			recipeList: filteredList
+		});
+	}
 	addRecipe() {
 		const newRecipe = {
 			name: "Новый рецепт",
@@ -29,7 +37,7 @@ class Box extends Component {
 	render() {
 		return (
 			<div className="Box">
-				<RecipeItems recipeList={this.state.recipeList}/>
+				<RecipeItems recipeList={this.state.recipeList} deleteItem={this.deleteRecipe.bind(this)}/>
 				<Button clickEvent={this.addRecipe.bind(this)}>
 					Добавить рецепт
 				</Button>

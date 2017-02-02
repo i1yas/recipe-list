@@ -30,3 +30,36 @@
 .Recipe__toggle-box {
 	margin-bottom: 1rem;
 }
+
+.Recipe__add, .Recipe__rename, .Recipe__delete {
+	display: inline-block;
+}
+
+.Recipe__add {
+	width: 40%;
+}
+
+.Recipe__rename, .Recipe__delete {
+	width: 30%;
+}
+
+.Recipe__rename > .Button {
+	background-color: #fdfdfc
+}
+
+.Recipe__delete > .Button {
+	background-color: #fff4f4
+}
+
+@media(max-width: 600px) {
+	.Recipe__add {
+		width: 100%;
+	}
+
+	.Recipe__rename, .Recipe__delete {
+		width: 50%;
+	}
+	.Recipe__rename > .Button, .Recipe__delete > .Button {
+		font-size: 1rem;
+	}
+}

@@ -17,6 +17,15 @@ class Recipe extends Component {
 			isOpen: !this.state.isOpen
 		});
 	}
+	rename() {
+		this.setState({
+			...this.state,
+			name: "Рецепт"
+		})
+	}
+	delete() {
+		this.props.deleteItem(this.state);
+	}
 	updateList(newValue) {
 		const filteredList = this.state.ingrList.filter(item => {
 			return item.id !== newValue.id
@@ -64,11 +73,29 @@ class Recipe extends Component {
 						updateList={this.updateList.bind(this)}
 						deleteItem={this.deleteItem.bind(this)}
 						/>
-						<Button
-						clickEvent={this.addIngr.bind(this)}
-						>
-							Добавить ингредиент
-						</Button>
+						<div className="Recipe__buttons">
+							<div className="Recipe__add">
+								<Button
+								clickEvent={this.addIngr.bind(this)}
+								>
+									Добавить ингредиент
+								</Button>
+							</div>
+							<div className="Recipe__rename">
+								<Button
+								clickEvent={this.rename.bind(this)}
+								>
+									Переименовать
+								</Button>
+							</div>
+							<div className="Recipe__delete">
+								<Button
+								clickEvent={this.delete.bind(this)}
+								>
+									Удалить
+								</Button>
+							</div>
+						</div>
 					</div>
 				}
 			</div>
