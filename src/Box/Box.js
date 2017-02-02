@@ -18,9 +18,10 @@ class Box extends Component {
 		});
 	}
 	addRecipe() {
+		// Should normalize id after setState
 		const newRecipe = {
 			name: "Новый рецепт",
-			id: this.state.recipeList.length,
+			id: (this.state.recipeList.length + 1),
 			isOpen: false,
 			ingrList: [
 				{

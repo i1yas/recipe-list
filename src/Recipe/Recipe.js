@@ -28,9 +28,6 @@ class Recipe extends Component {
 			name: event.target.value
 		})
 	}
-	delete() {
-		this.props.deleteItem(this.state);
-	}
 	updateList(newValue) {
 		const filteredList = this.state.ingrList.filter(item => {
 			return item.id !== newValue.id
@@ -44,9 +41,9 @@ class Recipe extends Component {
 			ingrList: newList
 		});
 	}
-	deleteItem(deleteItem) {
+	deleteItem(inputItem) {
 		const filteredList = this.state.ingrList.filter(item => {
-			return item.id !== deleteItem.id;
+			return item.id !== inputItem.id;
 		});
 		this.setState({
 			...this.state,
@@ -76,6 +73,9 @@ class Recipe extends Component {
 		if(event.key === 'Enter') {
 			this.finishRename();
 		}
+	}
+	deleteHandler() {
+		this.props.deleteItem(this.state);
 	}
 	addIngr() {
 		const newIngr = {
@@ -125,7 +125,7 @@ class Recipe extends Component {
 							</div>
 							<div className="Recipe__delete">
 								<Button
-								clickEvent={this.delete.bind(this)}
+								clickEvent={this.deleteHandler.bind(this)}
 								>
 									Удалить
 								</Button>
