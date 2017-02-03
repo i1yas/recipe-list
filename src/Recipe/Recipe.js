@@ -67,7 +67,6 @@ class Recipe extends Component {
 		});
 	}
 	blurHandler() {
-		debugger;
 		if(this.state.name === '') {
 			this.setState({
 				...this.state,

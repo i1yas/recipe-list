@@ -15,10 +15,13 @@ class Box extends Component {
 		});
 		this.setState({
 			recipeList: filteredList
+		}, () => {
+			if(filteredList.length === 0) {
+				this.addRecipe();
+			}
 		});
 	}
 	addRecipe() {
-		// Should normalize id after setState
 		const newRecipe = {
 			name: "Новый рецепт",
 			id: (this.state.recipeList.length + 1),
