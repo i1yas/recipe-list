@@ -9,6 +9,9 @@ class Box extends Component {
 		super(props);
 		this.state = {recipeList: props.data};
 	}
+	updateStorage(state) {
+		localStorage.setItem('recipeList', JSON.stringify(state.recipeList));
+	}
 	deleteRecipe(inputRecipe) {
 		const filteredList = this.state.recipeList.filter(recipe => {
 			return recipe.id !== inputRecipe.id;
@@ -19,6 +22,7 @@ class Box extends Component {
 			if(filteredList.length === 0) {
 				this.addRecipe();
 			}
+			this.updateStorage(this.state);
 		});
 	}
 	addRecipe() {
@@ -36,12 +40,17 @@ class Box extends Component {
 		const newList = [...this.state.recipeList, newRecipe];
 		this.setState({
 			recipeList: newList
+		}, () => {
+			this.updateStorage(this.state);
 		});
 	}
 	render() {
 		return (
 			<div className="Box">
-				<RecipeItems recipeList={this.state.recipeList} deleteItem={this.deleteRecipe.bind(this)}/>
+				<RecipeItems
+				recipeList={this.state.recipeList}
+				deleteItem={this.deleteRecipe.bind(this)}
+				/>
 				<Button clickEvent={this.addRecipe.bind(this)}>
 					Добавить рецепт
 				</Button>

@@ -11,6 +11,23 @@ class Recipe extends Component {
 			...props.data
 		};
 	}
+	updateStorage(state) {
+		const storage = JSON.parse(localStorage.getItem('recipeList'));
+		// let index;
+		// for(let i = 0; i < storage.length; i++) {
+		// 	if(storage[i].id === this.state.id) {
+		// 		index = i;
+		// 	}
+		// }
+		const newStorage = storage.map(item => {
+			if(item.id === this.state.id) {
+				return this.state;
+			}
+			return item;
+		});
+		// storage[index] = this.state;
+		localStorage.setItem('recipeList', JSON.stringify(newStorage));
+	}
 	componentDidUpdate() {
 		if(this.state.isRenamed) {
 			this.refs.area.focus();
@@ -26,7 +43,7 @@ class Recipe extends Component {
 		this.setState({
 			...this.state,
 			name: event.target.value
-		})
+		});
 	}
 	updateList(newValue) {
 		const filteredList = this.state.ingrList.filter(item => {
@@ -39,6 +56,8 @@ class Recipe extends Component {
 		this.setState({
 			...this.state,
 			ingrList: newList
+		}, () => {
+			this.updateStorage(this.state)
 		});
 	}
 	deleteItem(inputItem) {
@@ -52,13 +71,16 @@ class Recipe extends Component {
 			if(filteredList.length === 0) {
 				this.addIngr()
 			}
+			this.updateStorage(this.state);
 		});
 	}
 	finishRename() {
 		this.setState({
 			...this.state,
 			isRenamed: false
-		})
+		}, () => {
+			this.updateStorage(this.state)
+		});
 	};
 	renameHandler() {
 		this.setState({
@@ -85,14 +107,18 @@ class Recipe extends Component {
 		this.props.deleteItem(this.state);
 	}
 	addIngr() {
+		const ingrList = this.state.ingrList;
+		const lastID = ingrList[ingrList.length - 1];
 		const newIngr = {
-			id: this.state.ingrList.length,
+			id: (lastID + 1),
 			value: 'новый ингредиент'
 		}
 		const newList = [...this.state.ingrList, newIngr];
 		this.setState({
 			...this.state,
 			ingrList: newList
+		}, () => {
+			this.updateStorage(this.state)
 		});
 	}
 	render() {

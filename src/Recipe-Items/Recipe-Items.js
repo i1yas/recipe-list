@@ -8,7 +8,12 @@ class RecipeItems extends Component {
 		return (
 			<div className="Recipe-Items">
 				{data.map(recipe => {
-					return <Recipe key={recipe.id} data={recipe} deleteItem={this.props.deleteItem}/>
+					return <Recipe
+					key={recipe.id}
+					data={recipe}
+					deleteItem={this.props.deleteItem}
+					updateStorage={this.props.updateStorage}
+					/>
 				})}
 			</div>
 		);
